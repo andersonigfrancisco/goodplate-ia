@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#2E9D4C",
+    backgroundColor: "#14684E",
     position: "absolute",
     right: 42,
     top: 42,

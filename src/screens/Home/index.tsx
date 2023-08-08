@@ -66,7 +66,7 @@ export function Home() {
     
   }
 
-  async function foodDetect(imageBase64:string | undefined) {
+  async function foodDetect(imageBase64:any | undefined) {
 
       const response = await api.post(`/v2/models/${process.env.EXPO_PUBLIC_API_MODEL_ID}/versions/${process.env.EXPO_PUBLIC_API_MODEL_VERSION_ID}/outputs`,{
         "user_app_id":{
@@ -77,7 +77,7 @@ export function Home() {
           {
             "data":{
               "image":{
-                "url":"https://github.com/andersonigfrancisco.png"
+                "base64":imageBase64
               }
             }
           }
@@ -90,6 +90,10 @@ export function Home() {
           percentage: `${concept.value * 100} %`
         }
       })
+
+     // console.log(await translateObj(concept[0]))
+
+      //console.log(concept[0])
 
       const isVegetable = foodContains(concept,'vegetable');
       setMessage( isVegetable ? '' : 'Adiciona vegetal no seu prato!')

@@ -7,9 +7,9 @@ export const styles = StyleSheet.create({
     gap: 12,
     alignItems: 'center',
     height: 56,
-    borderRadius: 7,
+    borderRadius: 9,
     justifyContent: 'center',
-    backgroundColor: "#2E9D4C",
+    backgroundColor: "#14684E",
   },
   message: {
     fontFamily: "Poppins_400Regular",

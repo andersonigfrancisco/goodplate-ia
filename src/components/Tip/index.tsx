@@ -11,7 +11,7 @@ export function Tip({ message }: Props) {
   return (
     <View style={styles.container}>
       <MaterialIcons
-        name="restaurant"
+        name="search"
         color="#FFFFFF"
         size={24}
       />
