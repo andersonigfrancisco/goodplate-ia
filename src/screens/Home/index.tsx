@@ -12,6 +12,7 @@ import { Button } from '../../components/Button';
 
 export function Home() {
   const [selectedImageUri, setSelectedImageUri] = useState('');
+  const [isLoading, setIsLoadin] = useState(false)
 
   async function handleSelectImage() {
 
@@ -22,6 +23,7 @@ export function Home() {
       if(status !== ImgePicker.PermissionStatus.GRANTED){
         return Alert.alert("É necessario conceder permissão para acessar sua galeria!")
       }
+      setIsLoadin(true)
       const response = await ImgePicker.launchImageLibraryAsync({
         mediaTypes: ImgePicker.MediaTypeOptions.Images,
         allowsEditing:true,
@@ -29,19 +31,40 @@ export function Home() {
         quality:1
       })
       if(response.canceled)
-        return;
-      else
-        setSelectedImageUri(response.assets[0].uri)
+        return setIsLoadin(false)
+       
+      if(!response.canceled){
+        
+        const imgManipuled = await ImageManipulator.manipulateAsync(
+          response.assets[0].uri,
+          [{resize:{width:900}}],
+          {
+            compress:1,
+            format:ImageManipulator.SaveFormat.JPEG,
+            base64:true
+          }
+        )
+        setSelectedImageUri(imgManipuled.uri)
+        foodDetect(imgManipuled.base64)
+
+      }
+       
     } catch (error) {
       
       console.log(error)
     }
     
-   }
+  }
+
+  async function foodDetect(imageBase64:string | undefined) {
+
+
+    
+  }
 
   return (
     <View style={styles.container}>
-      <Button onPress={handleSelectImage} />
+      <Button onPress={handleSelectImage} disabled={isLoading} />
 
       {
         selectedImageUri ?
