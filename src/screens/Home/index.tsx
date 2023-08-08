@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { Alert, Image, ScrollView, Text, View } from 'react-native';
 import *as ImgePicker from 'expo-image-picker'
 import *as ImageManipulator from 'expo-image-manipulator'
 
@@ -16,8 +16,22 @@ export function Home() {
   async function handleSelectImage() {
 
     try {
+      
       const {status} = await ImgePicker.requestMediaLibraryPermissionsAsync();
-      if(status !== ImgePicker.permissionStatus.)
+
+      if(status !== ImgePicker.PermissionStatus.GRANTED){
+        return Alert.alert("É necessario conceder permissão para acessar sua galeria!")
+      }
+      const response = await ImgePicker.launchImageLibraryAsync({
+        mediaTypes: ImgePicker.MediaTypeOptions.Images,
+        allowsEditing:true,
+        aspect:[4,4],
+        quality:1
+      })
+      if(response.canceled)
+        return;
+      else
+        setSelectedImageUri(response.assets[0].uri)
     } catch (error) {
       
       console.log(error)
