@@ -5,6 +5,7 @@ import { styles } from './styles';
 export type ItemProps = {
   name: string;
   percentage: string;
+  key:number
 }
 
 type Props = {

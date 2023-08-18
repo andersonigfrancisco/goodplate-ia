@@ -1,17 +1,17 @@
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity,TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
-type Props = {
+type Props  =  TouchableOpacityProps & {
   message: string;
 }
 
-export function Tip({ message }: Props) {
+export function Tip({ message,...rest }: Props) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} {...rest}>
       <MaterialIcons
-        name="search"
+        name="volunteer-activism"
         color="#FFFFFF"
         size={24}
       />
@@ -19,6 +19,6 @@ export function Tip({ message }: Props) {
       <Text style={styles.message}>
         {message}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
