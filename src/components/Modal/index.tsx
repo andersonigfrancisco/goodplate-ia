@@ -1,6 +1,8 @@
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, StyleSheet, ScrollView,Image } from 'react-native';
+
+import nutri from '../../../assets/nutri2.jpg'
 
 export const CustomModal = ({ visible, toggleModal,texto }:any) => {
   return (
@@ -51,6 +53,10 @@ const styles = StyleSheet.create({
     marginTop:10,
    color: "#14684E",
    textAlign:'center'
+  },
+  image: {
+    width:100,
+    height:100
   },
   
 });

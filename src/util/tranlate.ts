@@ -25,7 +25,7 @@ export async function translater (Obj:any)  {
             },
             headers: {
               'content-type': 'application/json',
-              'X-RapidAPI-Key': 'c6710cc8f3msh5340a68728d05e6p10a861jsn7c9cecfd9225',
+              'X-RapidAPI-Key': `${process.env.EXPO_PUBLIC_API_RAPI_API}`,
               'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com'
             },
             data: [
